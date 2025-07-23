@@ -27,10 +27,16 @@ jobs:
           name: patcher_exe
           path: |
             patch_killcount_mod.exe
+            4. Half-Life (100) + BXT + RI.bat
+            5. Half-Life (100).bat
+            6. Force Clean Half-Life (100).bat
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: patcher_py
           path: |
             patch_killcount_mod.py
+            4. Half-Life (100PY) + BXT + RI.bat
+            5. Half-Life (100PY).bat
+            6. Force Clean Half-Life (100PY).bat
       
