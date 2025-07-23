@@ -20,6 +20,7 @@ jobs:
         run: |
           python insert_files_into_py.py
           pyinstaller --onefile --icon="icon.ico" patch_killcount_mod.py
+          copy "./dist/patch_killcount_mod.exe" "./patch_killcount_mod.exe"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
