@@ -1,4 +1,5 @@
 patch_killcount_mod.exe patch
+
 set BXT_DISABLE_VSYNC=1
 @echo off
 call "%~dp0Bunnymod XT\update.bat"
@@ -9,7 +10,7 @@ cd "%~dp0Half-Life"
 ::wmic process where name="hl.exe" CALL setpriority "high priority"
 
 :wait_for_hl_exit
-timeout /t 0.1
+timeout /t 1
 wmic process where name="hl.exe" get name |find "hl.exe">nul
 if %errorlevel%==0 goto :wait_for_hl_exit
 
