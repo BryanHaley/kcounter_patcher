@@ -79,7 +79,7 @@ def undo_kc_patch(dir):
                     shutil.copy2(os.path.join(dir, item["backup_path"]), os.path.join(dir, item["original_path"]))
                     os.remove(os.path.join(dir, item["backup_path"]))
                 else:
-                    print(f"WARNING: Failed to restore {os.path.join(dir, item["original_path"])} !")
+                    print(f"WARNING: Failed to restore {os.path.join(dir, item['original_path'])} !")
             elif item["type"] == "newfile":
                 print(f"Deleting {item['path']}...")
                 if os.path.exists(os.path.join(dir, item["path"])):
@@ -106,7 +106,7 @@ def undo_kc_patch(dir):
                     else:
                         shutil.rmtree(os.path.join(dir, item["backup_path"]))
                 else:
-                    print(f"WARNING: Failed to restore {os.path.join(dir, item["original_path"])} !")
+                    print(f"WARNING: Failed to restore {os.path.join(dir, item['original_path'])} !")
         except Exception as e:
             print(f"Error happened during one of the cleanup steps: {traceback.format_exc()}. Continuing...")
             continue      
