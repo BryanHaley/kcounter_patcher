@@ -1,7 +1,7 @@
-name: Build Overlay
+name: Build Patcher
 on: [push]
 jobs:
-  Build-Overlay-Windows:
+  Build-Patcher-Windows:
     runs-on: windows-latest
     strategy:
       matrix:
@@ -16,7 +16,7 @@ jobs:
         run: python -c "import sys; print(sys.version)"
       - name: Install dependencies
         run: python -m pip install pyinstaller==6.8.0
-      - name: Package overlay application
+      - name: Package patcher application
         run: |
           python insert_files_into_py.py
           pyinstaller --onefile --icon="icon.ico" patch_killcount_mod.py
@@ -30,6 +30,10 @@ jobs:
             4. Half-Life (100) + BXT + RI.bat
             5. Half-Life (100).bat
             6. Force Clean Half-Life (100).bat
+            GSP Half-Life (100).bat
+            GSP Force Clean Half-Life (100).bat
+            GSP Half-Life (100PY).bat
+            GSP Force Clean Half-Life (100PY).bat
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -39,4 +43,7 @@ jobs:
             4. Half-Life (100PY) + BXT + RI.bat
             5. Half-Life (100PY).bat
             6. Force Clean Half-Life (100PY).bat
-      
+            GSP Half-Life (100).bat
+            GSP Force Clean Half-Life (100).bat
+            GSP Half-Life (100PY).bat
+            GSP Force Clean Half-Life (100PY).bat
