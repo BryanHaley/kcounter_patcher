@@ -32,8 +32,6 @@ jobs:
             6. Force Clean Half-Life (100).bat
             GSP Half-Life (100).bat
             GSP Force Clean Half-Life (100).bat
-            GSP Half-Life (100PY).bat
-            GSP Force Clean Half-Life (100PY).bat
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -43,7 +41,5 @@ jobs:
             4. Half-Life (100PY) + BXT + RI.bat
             5. Half-Life (100PY).bat
             6. Force Clean Half-Life (100PY).bat
-            GSP Half-Life (100).bat
-            GSP Force Clean Half-Life (100).bat
             GSP Half-Life (100PY).bat
             GSP Force Clean Half-Life (100PY).bat
