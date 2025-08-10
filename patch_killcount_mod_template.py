@@ -19,7 +19,7 @@ def calculate_md5(file_path, chunk_size=8192):
     except Exception as e:
         return None
 
-def patch_hl_to_kc(dir):
+def patch_hl_to_kc(dir, hit_sound, counts):
     print("Applying KC patches...")
     for item in KC_FILES:
         try:
@@ -40,6 +40,16 @@ def patch_hl_to_kc(dir):
                     undo_kc_patch(dir)
                     sys.exit(1)
             elif item["type"] == "newfile":
+                # Special case for hit sounds
+                if item['path'] == "valve_WON/sound/kc/hitmarker.wav" and hit_sound:
+                    print(f"Copying hitsound from {hitsound} to {item['path']}...")
+                    shutil.copy2(hitsound, item['path'])
+                    continue
+                # Special case for counts.txt
+                elif item['path'] == "valve_WON/counts.txt" and counts:
+                    print(f"Copying hitsound from {counts} to {item['path']}...")
+                    shutil.copy2(counts, item['path'])
+                    continue
                 print(f"Creating {item['path']}...")
                 if not os.path.exists(os.path.dirname(os.path.join(dir, item["path"]))):
                     os.makedirs(os.path.dirname(os.path.join(dir, item["path"])))
@@ -115,16 +125,22 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("action", type=str, default="", help="'patch' or 'clean'")
     parser.add_argument("--dir", "-d", type=str, default="Half-Life", help="Directory containing 'valve' and 'valve_WON' folders (i.e. Half-Life directory)")
+    parser.add_argument("--hitsound", "-s", type=str, default="", help="Path to a .wav you want to play when you get a kill")
+    parser.add_argument("--counts", "-c", type=str, default="", help="Path to a counts.txt file")
     args = parser.parse_args()
     
     if not os.path.exists(os.path.join(args.dir, "valve")):
         sys.exit("Could not find Half-Life/valve directory! Set the 'dir' argument to the Half-Life directory within the HL2005 or GoldSrc Package.")
     if not os.path.exists(os.path.join(args.dir, "valve_WON")):
         sys.exit("Could not find Half-Life/valve_WON directory! Set the 'dir' argument to the Half-Life directory within the HL2005 or GoldSrc Package.")
+    if args.hitsound and not os.path.exists(args.hitsound):
+        sys.exit(f"Could not find custom hit sound at {args.hitsound}")
+    if args.counts and not os.path.exists(args.counts):
+        sys.exit(f"Could not find custom counts file at {args.counts}")
 
     if args.action == "patch" or args.action == "":
         try:
-            patch_hl_to_kc(args.dir)
+            patch_hl_to_kc(args.dir, args.hitsound, args.counts)
         except KeyboardInterrupt:
             undo_kc_patch(args.dir)
     elif args.action == "clean":
@@ -151,7 +167,7 @@ KC_FILES = [
         "type": "newfile",
         "path": "valve_WON/counts.txt",
         "md5" : "fa9ed0d971884809acfdf3b15821a879",
-        "data": "NDgNCjkwDQo0OQ0KNjQNCjQ5DQoxMzINCjQ3DQoyNQ0KNTMNCjEyMw0KNDcNCjczDQoxMQ0KNg0KMTEzDQoxNA=="
+        "data": "$counts.txt"
     },
     {
         "type": "newfile",
@@ -188,6 +204,12 @@ KC_FILES = [
         "path": "valve_WON/maps/c2a5.bsp",
         "md5" : "0679eefd8e2c3332aa534e73de5d6eb8",
         "data": "$c2a5.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c2a5b.bsp",
+        "md5" : "8fdad6206020a1edc6068d2c6494fc81",
+        "data": "$c2a5b.bsp"
     },
     {
         "type": "newfile",
