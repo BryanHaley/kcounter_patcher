@@ -20,7 +20,7 @@ for item in os.listdir('.'):
             hasher.update(filedata)
         filedata = base64.b64encode(filedata).decode('utf-8')
         py_script = py_script.replace('$' + filename, filedata)
-        py_script = py_script.replace('$' + filename + '.md5', hasher.hexdigest())
+        py_script = py_script.replace('$' + filename + '.md5', hasher.hexdigest().lower())
     except Exception:
         print(traceback.format_exc())
 

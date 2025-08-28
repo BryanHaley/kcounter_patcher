@@ -15,7 +15,7 @@ def calculate_md5(file_path, chunk_size=8192):
         with open(file_path, "rb") as f:
             for byte_block in iter(lambda: f.read(chunk_size), b""):
                 md5_hash.update(byte_block)
-        return md5_hash.hexdigest()
+        return md5_hash.hexdigest().lower()
     except Exception as e:
         return None
 
@@ -37,8 +37,8 @@ def patch_hl_to_kc(dir, hit_sound, counts):
                     newfile.write(base64.b64decode(item["data"]))
                 # Sanity check md5 after writing patched file
                 calculated_md5 = calculate_md5(os.path.join(dir, item["original_path"]))
-                if calculated_md5 != item["md5"]:
-                    print(f"Checksum failure on patched file: {item['original_path']}. Expected: {item['patched_md5']}, got: {calculated_md5}\n")
+                if calculated_md5 != item["md5"].lower():
+                    print(f"Checksum failure on patched file: {item['original_path']}. Expected: {item['md5'].lower()}, got: {calculated_md5}\n")
                     undo_kc_patch(dir)
                     sys.exit(1)
             elif item["type"] == "newfile":
@@ -58,9 +58,9 @@ def patch_hl_to_kc(dir, hit_sound, counts):
                 with open(os.path.join(dir, item["path"]), 'wb+') as newfile:
                     newfile.write(base64.b64decode(item["data"]))
                 # Sanity check md5
-                calculated_md5 = calculate_md5(os.path.join(dir, item["path"]))
-                if calculated_md5 != item["md5"]:
-                    print(f"Checksum failure on file: {item['path']}. Expected: {item['md5']}, got: {calculated_md5}\n")
+                calculated_md5 = calculate_md5(os.path.join(dir, item["path"])).lower()
+                if calculated_md5 != item["md5"].lower():
+                    print(f"Checksum failure on file: {item['path']}. Expected: {item['md5'].lower()}, got: {calculated_md5}\n")
                     undo_kc_patch(dir)
                     sys.exit(1)
             elif item["type"] == "move_and_restore":
