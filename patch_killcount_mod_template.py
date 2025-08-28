@@ -185,9 +185,21 @@ KC_FILES = [
     },
     {
         "type": "newfile",
+        "path": "valve_WON/maps/c1a3.bsp",
+        "md5" : "$c1a3.bsp.md5",
+        "data": "$c1a3.bsp"
+    },
+    {
+        "type": "newfile",
         "path": "valve_WON/maps/c1a4f.bsp",
         "md5" : "$c1a4f.bsp.md5",
         "data": "$c1a4f.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c1a4g.bsp",
+        "md5" : "$c1a4g.bsp.md5",
+        "data": "$c1a4g.bsp"
     },
     {
         "type": "newfile",
@@ -200,6 +212,18 @@ KC_FILES = [
         "path": "valve_WON/maps/c2a2b1.bsp",
         "md5" : "$c2a2b1.bsp.md5",
         "data": "$c2a2b1.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c2a3e.bsp",
+        "md5" : "$c2a3e.bsp.md5",
+        "data": "$c2a3e.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c2a4.bsp",
+        "md5" : "$c2a4.bsp.md5",
+        "data": "$c2a4.bsp"
     },
     {
         "type": "newfile",
@@ -227,6 +251,24 @@ KC_FILES = [
     },
     {
         "type": "newfile",
+        "path": "valve_WON/maps/c3a1.bsp",
+        "md5" : "$c3a1.bsp.md5",
+        "data": "$c3a1.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c4a1.bsp",
+        "md5" : "$c4a1.bsp.md5",
+        "data": "$c4a1.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c4a1a.bsp",
+        "md5" : "$c4a1a.bsp.md5",
+        "data": "$c4a1a.bsp"
+    },
+    {
+        "type": "newfile",
         "path": "valve_WON/maps/c4a1b.bsp",
         "md5" : "$c4a1b.bsp.md5",
         "data": "$c4a1b.bsp"
@@ -236,6 +278,24 @@ KC_FILES = [
         "path": "valve_WON/maps/c4a1e.bsp",
         "md5" : "$c4a1e.bsp.md5",
         "data": "$c4a1e.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c4a1f.bsp",
+        "md5" : "$c4a1f.bsp.md5",
+        "data": "$c4a1f.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c4a2.bsp",
+        "md5" : "$c4a2.bsp.md5",
+        "data": "$c4a2.bsp"
+    },
+    {
+        "type": "newfile",
+        "path": "valve_WON/maps/c4a3.bsp",
+        "md5" : "$c4a3.bsp.md5",
+        "data": "$c4a3.bsp"
     },
     {
         "type": "move_and_restore",
