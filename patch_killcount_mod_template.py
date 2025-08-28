@@ -28,8 +28,10 @@ def patch_hl_to_kc(dir, hit_sound, counts):
                     print("Patches have already been applied. Skipping...")
                     break
                 print(f"Patching {item['original_path']}...")
-                # Make a backup of original file
-                shutil.copy2(os.path.join(dir, item["original_path"]), os.path.join(dir, item["backup_path"]))
+                # Make a backup of original file if the backup path doesn't already exist
+                # (If it does we'd probably just overwrite the actual original)
+                if not os.path.exists(os.path.join(dir, item["backup_path"])):
+                    shutil.copy2(os.path.join(dir, item["original_path"]), os.path.join(dir, item["backup_path"]))
                 # Write patched file
                 with open(os.path.join(dir, item["original_path"]), 'wb+') as newfile:
                     newfile.write(base64.b64decode(item["data"]))
