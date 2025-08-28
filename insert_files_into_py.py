@@ -1,6 +1,7 @@
 import os
 import base64
 import traceback
+import hashlib
 
 py_script = ""
 with open('patch_killcount_mod_template.py', 'r') as py_script_file:
