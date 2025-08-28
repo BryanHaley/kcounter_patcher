@@ -19,8 +19,8 @@ for item in os.listdir('.'):
             filedata = item_file.read()
             hasher.update(filedata)
         filedata = base64.b64encode(filedata).decode('utf-8')
-        py_script = py_script.replace('$' + filename, filedata)
         py_script = py_script.replace('$' + filename + '.md5', hasher.hexdigest().lower())
+        py_script = py_script.replace('$' + filename, filedata)
     except Exception:
         print(traceback.format_exc())
 
