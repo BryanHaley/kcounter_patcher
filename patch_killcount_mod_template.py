@@ -232,6 +232,12 @@ KC_FILES = [
         "data": "$c4a1b.bsp"
     },
     {
+        "type": "newfile",
+        "path": "valve_WON/maps/c4a1e.bsp",
+        "md5" : "$c4a1e.bsp.md5",
+        "data": "$c4a1e.bsp"
+    },
+    {
         "type": "move_and_restore",
         "original_path": "valve_WON/maps/graphs",
         "backup_path": "valve_WON/maps/graphs.kcbak"
