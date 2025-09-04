@@ -215,12 +215,6 @@ KC_FILES = [
     },
     {
         "type": "newfile",
-        "path": "valve_WON/maps/c2a3e.bsp",
-        "md5" : "$c2a3e.bsp.md5",
-        "data": "$c2a3e.bsp"
-    },
-    {
-        "type": "newfile",
         "path": "valve_WON/maps/c2a4.bsp",
         "md5" : "$c2a4.bsp.md5",
         "data": "$c2a4.bsp"
