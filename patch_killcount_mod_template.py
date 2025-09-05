@@ -45,12 +45,12 @@ def patch_hl_to_kc(dir, hit_sound, counts):
                 # Special case for hit sounds
                 if item['path'] == "valve_WON/sound/kc/hitmarker.wav" and hit_sound:
                     print(f"Copying hitsound from {hit_sound} to {item['path']}...")
-                    shutil.copy2(hit_sound, item['path'])
+                    shutil.copy2(hit_sound, os.path.join(dir, item['path']))
                     continue
                 # Special case for counts.txt
                 elif item['path'] == "valve_WON/counts.txt" and counts:
                     print(f"Copying counts from {counts} to {item['path']}...")
-                    shutil.copy2(counts, item['path'])
+                    shutil.copy2(counts, os.path.join(dir, item['path']))
                     continue
                 print(f"Creating {item['path']}...")
                 if not os.path.exists(os.path.dirname(os.path.join(dir, item["path"]))):
