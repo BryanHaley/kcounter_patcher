@@ -65,10 +65,12 @@ def patch_hl_to_kc(dir, hit_sound, counts):
                     sys.exit(1)
             elif item["type"] == "move_and_restore":
                 print(f"Moving {item['original_path']}...")
-                if os.path.isfile(os.path.join(dir, item["original_path"])) and os.path.exists(os.path.join(dir, item["original_path"])):
-                    shutil.copy2(os.path.join(dir, item["original_path"]), os.path.join(dir, item["backup_path"]))
-                elif os.path.exists(os.path.join(dir, item["original_path"])):
-                    shutil.copytree(os.path.join(dir, item["original_path"]), os.path.join(dir, item["backup_path"]))
+                # Don't overwrite if the backup already exists
+                if not os.path.exists(os.path.join(dir, item["backup_path"])):
+                    if os.path.isfile(os.path.join(dir, item["original_path"])) and os.path.exists(os.path.join(dir, item["original_path"])):
+                        shutil.copy2(os.path.join(dir, item["original_path"]), os.path.join(dir, item["backup_path"]))
+                    elif os.path.exists(os.path.join(dir, item["original_path"])):
+                        shutil.copytree(os.path.join(dir, item["original_path"]), os.path.join(dir, item["backup_path"]))
             elif item["type"] == "zip":
                 print(f"Extracting to {item['extract_to_path']}...")
                 if not os.path.exists(os.path.dirname(os.path.join(dir, item["extract_to_path"]))):
